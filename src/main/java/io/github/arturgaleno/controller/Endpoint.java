@@ -44,4 +44,15 @@ public class Endpoint {
 
         return uuid;
     }
+
+
+    @GetMapping(path = "updateSession")
+    public void createSession(@RequestParam("sessionId") String sessionId, @RequestParam("value") String value) {
+
+        SessionObject sessionObject = sessionManager.getSession(sessionId);
+
+        sessionObject.setValue(value);
+
+        sessionManager.storeSession(sessionId, sessionObject);
+    }
 }
