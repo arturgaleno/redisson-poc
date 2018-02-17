@@ -19,12 +19,10 @@ public class Endpoint {
     @Autowired
     private SessionManager sessionManager;
 
-    @GetMapping(path = "test")
-    public SessionObject test(@RequestParam("sessionId") String sessionId) {
+    @GetMapping(path = "getSession")
+    public SessionObject getSession(@RequestParam("sessionId") String sessionId) {
 
-        SessionObject sessionObject = sessionManager.getSession(sessionId);
-
-        return sessionObject;
+        return sessionManager.getSession(sessionId);
     }
 
     @GetMapping(path = "createSession")
@@ -47,7 +45,7 @@ public class Endpoint {
 
 
     @GetMapping(path = "updateSession")
-    public void createSession(@RequestParam("sessionId") String sessionId, @RequestParam("value") String value) {
+    public void updateSession(@RequestParam("sessionId") String sessionId, @RequestParam("value") String value) {
 
         SessionObject sessionObject = sessionManager.getSession(sessionId);
 
